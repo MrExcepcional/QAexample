@@ -9,12 +9,13 @@ SCREEN_DUMP_LOCATION = os.path.join(
 )
 URL = "https://staging.scrive.com/t/9221714692410699950/7348c782641060a9"
 
-browsers = ["Firefox", "Chrome"]
-
 class FunctionalTest(unittest.TestCase):
 
+
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = get_browser("Firefox")
+        if not self.browser:
+            raise Exception("No valid browser name detected.")
         self.staging_server = URL
 
     def tearDown(self):
@@ -31,6 +32,16 @@ class FunctionalTest(unittest.TestCase):
         )
 
     def take_screenshot(self):
+        if not os.path.exists(SCREEN_DUMP_LOCATION):
+            os.makdirs(SCREEN_DUMP_LOCATION)
         filename = self._get_filename() + '.png'
         print('screenshotting to', filename)
         self.browser.get_screenshot_as_file(filename)
+
+    def get_browser(self, browser_name):
+        if browser_name.lower() == "firefox":
+            return webdriver.Firefox()
+        elif browser_name.lower() == "chrome":
+            return webdriver.Chrome()
+        else:
+            return None
