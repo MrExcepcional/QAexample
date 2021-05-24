@@ -1,3 +1,5 @@
 geckodriver.log
 __pycache__/
 screendumps/
+*.zip
+run_on_three_browsers.sh
