@@ -1,8 +1,10 @@
 import os
+import time
 import unittest
 from datetime import datetime
 
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 
 SCREEN_DUMP_LOCATION = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), 'screendumps'
@@ -14,7 +16,7 @@ class FunctionalTest(unittest.TestCase):
 
 
     def setUp(self):
-        self.browser = get_browser("Firefox")
+        self.browser = self.get_browser("Firefox")
         if not self.browser:
             raise Exception("No valid browser name detected.")
         self.staging_server = URL
@@ -61,5 +63,28 @@ class FunctionalTest(unittest.TestCase):
 
     @***REMOVED***
     def ***REMOVED***_for_next_button_to_turn_active(self):
-        next_button = self.browser.find_element_by_class_name("button button-block action")
+        next_button = self.browser.find_element_by_class_name(
+            "button button-block action"
+            )
+        self.assertIn("Next", next_button.text)
         return next_button
+
+    @***REMOVED***
+    def ***REMOVED***_for_arrow_to_appear(self):
+        return self.browser.find_element_by_class_name(
+            "scroll-arrow down"
+            )
+
+    @***REMOVED***
+    def ***REMOVED***_for_confirmation_modal(self, confirmation_text):
+        modal = self.browser.find_element_by_class_name(
+            "section sign above-overlay"
+            )
+        self.assertIn(confirmation_text, modal.text)
+
+    @***REMOVED***
+    def ***REMOVED***_for_documet_signed_confirmation(self):
+        confirmation = self.browser.find_element_by_class_name(
+            "instructions s-header-doc-signed"
+            )
+        self.assertIn("Document signed!", confirmation.text)
