@@ -16,7 +16,8 @@ class FunctionalTest(unittest.TestCase):
 
 
     def setUp(self):
-        self.browser = self.get_browser("Firefox")
+        selected_browser = os.environ.get('BROWSER')
+        self.browser = self.get_browser(selected_browser)
         if not self.browser:
             raise Exception("No valid browser name detected.")
         self.staging_server = URL
