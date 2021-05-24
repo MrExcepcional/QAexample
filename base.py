@@ -8,6 +8,7 @@ SCREEN_DUMP_LOCATION = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), 'screendumps'
 )
 URL = "https://staging.scrive.com/t/9221714692410699950/7348c782641060a9"
+MAX_WAIT = 10
 
 class FunctionalTest(unittest.TestCase):
 
@@ -45,3 +46,15 @@ class FunctionalTest(unittest.TestCase):
             return webdriver.Chrome()
         else:
             return None
+
+    def ***REMOVED***(fn):
+        def modified_fn(*args, **kwargs):
+            start_time = time.time()
+            while True:
+                try:
+                    return fn(*args, **kwargs)
+                except (AssertionError, WebDriverException) as e:
+                    if time.time() - start_time > MAX_WAIT:
+                        raise e
+                    time.sleep(0.5)
+        return modified_fn
