@@ -58,3 +58,8 @@ class FunctionalTest(unittest.TestCase):
                         raise e
                     time.sleep(0.5)
         return modified_fn
+
+    @***REMOVED***
+    def ***REMOVED***_for_next_button_to_turn_active(self):
+        next_button = self.browser.find_element_by_class_name("button button-block action")
+        return next_button

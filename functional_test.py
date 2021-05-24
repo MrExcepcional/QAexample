@@ -28,11 +28,13 @@ class SignDocumentTest(FunctionalTest):
         name_box.send_keys('Daniel QA Leader')
 
         # He ***REMOVED***s for a "next" button to switch to active.
+        button = self.***REMOVED***_for_next_button_to_turn_active()
         # He clicks next.
+        button.click()
 
-        
         # Now a confirmation modal appears saying
         # "...by clicking the button you will sign the document..."
+        
         # He clicks sign
         # Now a text confirms that the documet has been signed
         # Satisfied he goes back to fika
