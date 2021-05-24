@@ -51,10 +51,11 @@ class FunctionalTest(unittest.TestCase):
             return webdriver.Firefox()
         elif browser_name == "chrome":
             return webdriver.Chrome()
-        elif (browser_name == "ie"
-            or browser_name == "internet explorer"):
+        elif browser_name == "ie":
+            user_n_pipe = os.environ.get('USER')
+            key = os.environ.get('KEY')
             driver = webdriver.Remote(
-                command_executor='https://mooibara_NPipe1:ebCH2LCHpK5B9swTGhpB@hub-cloud.browserstack.com/wd/hub',
+                command_executor=f'https://{user_n_pipe}:{key}@hub-cloud.browserstack.com/wd/hub',
                 desired_capabilities={
                     'os_version': '10',
                     'os': 'Windows',
