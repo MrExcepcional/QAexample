@@ -18,6 +18,7 @@ class FunctionalTest(unittest.TestCase):
     def setUp(self):
         selected_browser = os.environ.get('BROWSER')
         self.browser = self.get_browser(selected_browser)
+        print(f"Using {selected_browser} for this test")
         if not self.browser:
             raise Exception("No valid browser name detected.")
         self.staging_server = URL
@@ -39,13 +40,31 @@ class FunctionalTest(unittest.TestCase):
             os.makedirs(SCREEN_DUMP_LOCATION)
         filename = self._get_filename() + '.png'
         print('screenshotting to', filename)
-        self.browser.get_screenshot_as_file(filename)
+        if self.browser.name.lower() == "internet explorer":
+            self.browser.save_screenshot(filename)
+        else:
+            self.browser.get_screenshot_as_file(filename)
 
     def get_browser(self, browser_name):
-        if browser_name.lower() == "firefox":
+        browser_name = browser_name.lower()
+        if browser_name == "firefox":
             return webdriver.Firefox()
-        elif browser_name.lower() == "chrome":
+        elif browser_name == "chrome":
             return webdriver.Chrome()
+        elif (browser_name == "ie"
+            or browser_name == "internet explorer"):
+            driver = webdriver.Remote(
+                command_executor='https://mooibara_NPipe1:ebCH2LCHpK5B9swTGhpB@hub-cloud.browserstack.com/wd/hub',
+                desired_capabilities={
+                    'os_version': '10',
+                    'os': 'Windows',
+                    'browser': 'ie',
+                    'browser_version': '11.0',
+                    'name': 'Parallel Test1', # test name
+                    'build': 'browserstack-build-1' # Your tests will be organized within this build
+                }
+            )
+            return driver
         else:
             return None
 
