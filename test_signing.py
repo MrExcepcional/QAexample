@@ -29,10 +29,8 @@ class SignDocumentTest(FunctionalTest):
         # Daniel enters his full name.
         name_box.send_keys('Daniel QA Leader')
 
-        # A notorious arrow appears inviting to scroll down
-        arrow = self.***REMOVED***_for_arrow_to_appear()
-        # He clicks it or just scrolls down to the end of page
-        arrow.click() # May be we want a separate test scrolling down?
+        # He scrolls down to the end of page
+        self.browser.execute_script("window.scrollTo(0,document.body.scrollHeight)")
 
         # He ***REMOVED***s for a "next" button to switch to active.
         button = self.***REMOVED***_for_next_button_to_turn_active()
@@ -45,8 +43,8 @@ class SignDocumentTest(FunctionalTest):
         # Now saves a screenshot
         self.take_screenshot()
         # He clicks sign
-        sign_button = self.browser.find_element_by_class_name(
-            "button button-block sign-button action"
+        sign_button = self.browser.find_element_by_css_selector(
+            'span[data-reactid=".0.4.9.3.2.0.1"]'
             )
         sign_button.click()
 
