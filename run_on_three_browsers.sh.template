@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+BROWSER=Firefox python3.9 -m unittest discover &
+BROWSER=Chrome python3.9 -m unittest discover &
+BROWSER=IE USER=yourUserHere KEY=yourKeyHere python3.9 -m unittest discover &
+
+wait
+echo "Test on both browsers done"
