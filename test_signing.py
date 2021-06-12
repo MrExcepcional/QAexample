@@ -31,14 +31,14 @@ class SignDocumentTest(FunctionalTest):
         # He scrolls down to the end of page
         self.browser.execute_script("window.scrollTo(0,document.body.scrollHeight)")
 
-        # He waits for a "next" button to switch to active.
-        button = self.wait_for_next_button_to_turn_active()
+        # He ***REMOVED***s for a "next" button to switch to active.
+        button = self.***REMOVED***_for_next_button_to_turn_active()
         # He clicks next.
         button.click()
 
         # Now a confirmation modal appears saying
         # "...by clicking the button you will sign the document..."
-        self.wait_for_confirmation_modal("by clicking the button you will sign")
+        self.***REMOVED***_for_confirmation_modal("by clicking the button you will sign")
         # Now saves a screenshot
         self.take_screenshot()
         # He clicks sign
@@ -48,5 +48,5 @@ class SignDocumentTest(FunctionalTest):
         sign_button.click()
 
         # Now a text confirms that the documet has been signed
-        self.wait_for_documet_signed_confirmation()
+        self.***REMOVED***_for_documet_signed_confirmation()
         # Satisfied he goes back to fika

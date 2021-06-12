@@ -69,7 +69,7 @@ class FunctionalTest(unittest.TestCase):
         else:
             return None
 
-    def wait(fn):
+    def ***REMOVED***(fn):
         def modified_fn(*args, **kwargs):
             start_time = time.time()
             while True:
@@ -81,23 +81,23 @@ class FunctionalTest(unittest.TestCase):
                     time.sleep(0.5)
         return modified_fn
 
-    @wait
-    def wait_for_next_button_to_turn_active(self):
+    @***REMOVED***
+    def ***REMOVED***_for_next_button_to_turn_active(self):
         next_button = self.browser.find_element_by_css_selector(
             'a[data-reactid=".0.4.9.0.0"]'
             )
         self.assertIn("Next", next_button.text)
         return next_button
 
-    @wait
-    def wait_for_confirmation_modal(self, confirmation_text):
+    @***REMOVED***
+    def ***REMOVED***_for_confirmation_modal(self, confirmation_text):
         modal = self.browser.find_element_by_css_selector(
             'div[data-reactid=".0.4.9"]'
             )
         self.assertIn(confirmation_text, modal.text)
 
-    @wait
-    def wait_for_documet_signed_confirmation(self):
+    @***REMOVED***
+    def ***REMOVED***_for_documet_signed_confirmation(self):
         confirmation = self.browser.find_element_by_css_selector(
             'span[data-reactid=".0.4.2.1.0.0.0.0"]'
             )
