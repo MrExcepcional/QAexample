@@ -9,7 +9,7 @@ Use of python3.9 recommended. You can find it [here.](https://www.python.org/dow
 Is a good practice to use a virtualenv. [Here is a guide.](https://pythonbasics.org/virtualenv/)
 For Internet Explorer we use BrowserStack. Create your free account [here.](https://www.browserstack.com/automate)
 
-Download and unzip file. Edit run_on_three_browsers.sh.template replacing USER and KEY placeholders with your BrowserStack crendentials. Save it as run_on_three_browsers.sh
+Clone repository. Edit run_on_three_browsers.sh.template replacing USER and KEY placeholders with your BrowserStack crendentials. Save it as run_on_three_browsers.sh
 
 Install requirements
 ```bash
@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 ## 🚀 How to use
 
-Navigate inside the unzipped folder.
+Navigate inside the cloned folder.
 In command line run with the desired browser (Chrome, Firefox, IE).
 ```bash
 BROWSER=Chrome python3.9 -m unittest discover
